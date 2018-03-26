@@ -1,0 +1,153 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-color: #303030;
+  color: hsl(203, 93%, 89%);
+}
+
+/* HEADER */
+.logo {
+  height: 6vh;
+  width: 14%;
+  margin: 1vh 0 0 10vw;
+  display: inline-block;
+}
+
+.navWrap { 
+  display: inline-block;
+  background-color: skyblue;
+  width: 100%;
+  height: 8vh;
+}
+
+.nav {
+  float: right;
+  display: flex;
+  justify-content: flex-end;
+  list-style-type: none;
+  margin-top: 8px;
+}
+
+.navLink {
+  align-self: center;
+  min-width: 80px;
+  padding-right: 40px;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.navLink a {
+  color: #303030;
+  text-decoration: none;
+}
+
+.navLink > .navLinkActive {
+  border-bottom: solid 2px #303030;
+}
+
+/* HOME */
+.cardsWrap {
+  background: #303030;
+  color: #c8e9fd;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  min-height: 92vh;
+}
+
+.card {
+  margin: 40px 20px;
+  max-height: 200px;
+}
+
+.cardImg {
+  max-height: 200px;
+}
+
+/* DETAILS */
+.details {
+  min-height: 92vh;
+  background-color: #303030;
+  color: #c8e9fd;
+}
+
+.detailsImg {
+  display: block;
+  margin: 60px auto;
+  width: 80%;
+}
+
+.detailsContent {
+  padding: 40px;
+}
+
+.detailsContent h3 {
+  color: #c8e9fd;
+  display: inline-block;
+  font-size: 28px;
+  font-weight: 600;
+  margin-left: 15px;
+}
+
+.detailsContent h4 {
+  color: #c8e9fd;
+  display: inline-block;
+  font-size: 24px;
+  font-weight: 300;
+  margin-left: 50px;
+}
+
+.detailsContent .hp {
+  color: #c8e9fd;
+  font-size: 24px;
+  font-weight: 300;
+  margin-right: 15px;
+  float: right;
+}
+
+.detailsContent hr {
+  border-color: #c8e9fd;
+}
+
+.detailsContent .attack {
+  padding: 10px;
+  font-size: 24px;
+}
+
+.detailsContent .ant-row {
+  padding: 10px;
+  text-align: center;
+  font-size: 20px;
+}
+/* .detailsContent.ant-row .energy{
+  padding-top: 10px;
+} */
+
+/* ENERGY TYPES */
+
+.energy {
+  background-image: url('/images/energy-types.png');
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.energy.fighting {
+  background-position: -50px -25px;
+}
+
+.energy.colorless {
+  background-position: -25px 0;
+}
+
+.energy.water {
+  background-position: -75px -50px;
+}
+
+.energy.lightning {
+  background-position: -50px -50px;
+}
