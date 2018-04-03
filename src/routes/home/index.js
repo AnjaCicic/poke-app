@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 import { NavLink } from 'react-router-dom';
 
@@ -6,6 +7,10 @@ import CONFIG from '../../config';
 
 export default class extends PureComponent {
   static displayName = 'Home'
+
+  static propTypes = {
+    renderFavouritesBtn: PropTypes.func.isRequired,
+  }
 
   state = {
     cards: [],
@@ -23,10 +28,11 @@ export default class extends PureComponent {
   renderCards = () => {
     const { cards } = this.state;
 
-    return cards.map(card => (<div className="card">
+    return cards.map((card, index) => (<div className="card" key={index}>
       <NavLink to={`/details/${card.id}`}>
         <img className="cardImg" src={card.imageUrl} alt={card.name} />
       </NavLink>
+      {this.props.renderFavouritesBtn(card)}
     </div>));
   }
 

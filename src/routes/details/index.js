@@ -10,6 +10,7 @@ export default class extends PureComponent {
 
   static propTypes = {
     match: PropTypes.shape().isRequired,
+    renderFavouritesBtn: PropTypes.func.isRequired,
   }
 
   state = {
@@ -39,6 +40,7 @@ export default class extends PureComponent {
 
   render() {
     const { card } = this.state;
+
     if (!card || !card.id) {
       return (<Row className="details">
         <Col xs={24} sm={8}>
@@ -59,6 +61,7 @@ export default class extends PureComponent {
           src={card.imageUrl}
           alt={card.name}
         />
+        {this.props.renderFavouritesBtn(card)}
       </Col>
       <Col xs={24} sm={16}>
         <div className="detailsContent">

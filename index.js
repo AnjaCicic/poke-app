@@ -9,6 +9,8 @@ const app = express();
 
 const compiler = webpack(webpackConfig);
 
+process.env.NODE_ENV = 'development';
+
 app.use(webpackDevMiddleware(compiler, {
   noInfo: false,
   quiet: false,
