@@ -9,6 +9,7 @@ export default class extends PureComponent {
   static displayName = 'Home'
 
   static propTypes = {
+    sort: PropTypes.string.isRequired,
     renderFavouritesBtn: PropTypes.func.isRequired,
   }
 
@@ -23,6 +24,42 @@ export default class extends PureComponent {
           this.setState({ cards: res.data.cards });
         }
       });
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { sort: newSort } = nextProps;
+    const { sort } = this.props;
+    const { cards } = this.state;
+    let newCards = [];
+
+    if (newSort && newSort !== sort) {
+      switch (newSort) {
+        case 'id':
+          newCards = cards.sort((a, b) => a.id > b.id);
+          break;
+        case 'hpAscending':
+          newCards = cards.sort((a, b) => {
+            if (a.hp === 'None') return 1;
+            if (b.hp === 'None') return -1;
+
+            return parseInt(a.hp, 10) > parseInt(b.hp, 10);
+          });
+          break;
+        case 'hpDescending':
+          newCards = cards.sort((a, b) => {
+            if (a.hp === 'None') return 1;
+            if (b.hp === 'None') return -1;
+
+            return parseInt(a.hp, 10) < parseInt(b.hp, 10);
+          });
+          break;
+        default:
+          newCards = cards;
+          break;
+      }
+
+      this.setState({ cards: newCards });
+    }
   }
 
   renderCards = () => {

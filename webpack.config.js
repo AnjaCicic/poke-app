@@ -2,12 +2,13 @@ const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
+  devtool: 'source-map',
   entry: {
     app: './src/app.js',
   },
   output: {
     path: path.resolve('./public/dist'),
-    publicPath: "/dist",
+    publicPath: '/dist',
     filename: 'bundle.js',
   },
   module: {
@@ -23,4 +24,9 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('development'),
+    }),
+  ],
 };

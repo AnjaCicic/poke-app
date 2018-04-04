@@ -44,6 +44,10 @@ svg {
   text-transform: uppercase;
 }
 
+.navLink:hover {
+  cursor: pointer;
+}
+
 .navLink a {
   color: #303030;
   text-decoration: none;

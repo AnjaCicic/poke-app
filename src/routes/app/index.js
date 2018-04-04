@@ -12,8 +12,11 @@ export default class extends PureComponent {
   static displayName = 'App'
 
   state = {
+    sort: '',
     favourites: [],
   }
+
+  handleSortChange = sort => this.setState({ sort });
 
   addToFavourites = card => this.setState({ favourites: [...this.state.favourites, card] })
 
@@ -41,16 +44,17 @@ export default class extends PureComponent {
   }
 
   render() {
-    const { favourites } = this.state;
+    const { sort, favourites } = this.state;
 
     return (<BrowserRouter>
       <div>
-        <Header />
+        <Header changeSort={this.handleSortChange} />
         <div className="content">
           <Route
             exact
             path="/"
             render={props => <Home
+              sort={sort}
               renderFavouritesBtn={this.renderFavouritesBtn}
               {...props}
             />}

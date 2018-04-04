@@ -1,9 +1,9 @@
 {
   "name": "poke-app",
   "version": "0.1.0",
-  "private": true,
+  "license": "MIT",
   "scripts": {
-    "start": "node index.js",
+    "start": "node server.js",
     "start:dev": "better-npm-run start:dev",
     "lint:fix": "npm run lint -- --fix",
     "build": "react-scripts build",
@@ -12,9 +12,11 @@
     "lint": "./node_modules/.bin/eslint src"
   },
   "betterScripts": {
-    "command": "start:dev",
-    "env": {
-      "NODE_ENV": "development"
+    "start:dev": {
+      "command": "npm start",
+      "env": {
+        "NODE_ENV": "development"
+      }
     }
   },
   "dependencies": {
