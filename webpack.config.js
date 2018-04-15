@@ -1,8 +1,8 @@
-const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
   devtool: 'source-map',
+  devServer: { inline: true },
   entry: {
     app: './src/app.js',
   },
@@ -24,9 +24,4 @@ module.exports = {
       },
     ],
   },
-  plugins: [
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('development'),
-    }),
-  ],
 };

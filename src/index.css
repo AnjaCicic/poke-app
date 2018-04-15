@@ -210,18 +210,46 @@ svg {
   margin-right: 5px;
 }
 
-.energy.fighting {
-  background-position: -50px -25px;
+.energy.fire {
+  background-position: 0 0;
 }
 
 .energy.colorless {
   background-position: -25px 0;
 }
 
-.energy.water {
-  background-position: -75px -50px;
+.energy.fairy {
+  background-position: -50px 0;
+}
+
+.energy.metal {
+  background-position: -75px 0;
+}
+
+.energy.dragon {
+  background-position: 0 -25px;
 }
 
 .energy.lightning {
   background-position: -50px -50px;
+}
+
+.energy.fighting {
+  background-position: -50px -25px;
+}
+
+.energy.psychic {
+  background-position: -75px -25px;
+}
+
+.energy.darkness {
+  background-position: 0 -50px;
+}
+
+.energy.grass {
+  background-position: -25px -50px;
+}
+
+.energy.water {
+  background-position: -75px -50px;
 }

@@ -2,8 +2,12 @@
   "name": "poke-app",
   "version": "0.1.0",
   "license": "MIT",
+  "author": {
+    "name": "Anja Dragun",
+    "email": "anjadragun0@gmail.com"
+  },
   "scripts": {
-    "start": "node server.js",
+    "start": "node index.js",
     "start:dev": "better-npm-run start:dev",
     "lint:fix": "npm run lint -- --fix",
     "build": "react-scripts build",
@@ -38,8 +42,12 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-icons": "^2.2.7",
+    "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.1",
+    "redux": "^3.7.2",
+    "redux-observable": "^0.18.0",
+    "rxjs": "^5.5.8",
     "webpack": "^4.1.1",
     "webpack-dev-middleware": "^3.0.1",
     "webpack-dev-server": "^3.1.1"
