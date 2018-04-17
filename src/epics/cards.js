@@ -13,5 +13,4 @@ export const fetchCards = action$ =>
         .catch(() => ({
           type: CARDS.add,
           payload: [],
-        }))
-    );
+        })));
