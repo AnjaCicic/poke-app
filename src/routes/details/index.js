@@ -34,11 +34,12 @@ export default class extends PureComponent {
     if (!attacks || !attacks.length) return null;
 
     return attacks.map((attack, index) => (<div key={index} className="attack">
-      {(attack.cost && attack.cost.length) ?
-        attack.cost.map((single, ind) => <i key={ind} className={`energy ${single.toLowerCase()}`} />) :
-        null}
-      &nbsp; {attack.name} | {attack.damage}<br />
-      {attack.text ? <small>{attack.text}</small> : null}
+      <span className="attackName">{attack.name} | {attack.damage}</span>
+      {(attack.cost && attack.cost.length) ? (<span className="attackIcons">
+        {attack.cost.map((single, ind) => <i key={ind} className={`energy ${single.toLowerCase()}`} />)}
+      </span>) : null}
+      <br />
+      {attack.text ? <small className="attackDesc">{attack.text}</small> : null}
     </div>));
   }
 
@@ -70,8 +71,7 @@ export default class extends PureComponent {
       <Col xs={24} sm={16}>
         <div className="detailsContent">
           <h3>{card.name}</h3>
-          <h4>{card.supertype} - {card.subtype}</h4>
-          <h4 className="hp">HP {card.hp}</h4>
+          <h4>{card.supertype} - {card.subtype}  <span className="hp"> HP {card.hp} </span></h4>
           <hr />
           {this.renderAttacks()}
           <br />

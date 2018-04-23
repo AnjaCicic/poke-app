@@ -1,0 +1,307 @@
+@import '~antd/dist/antd.css';
+
+$backgroundGray: #303030;
+$textLightblue: #c8e9fd;
+$screenBreakpoint: 900px;
+
+/* GLOBAL STYLES */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-color: $backgroundGray;
+  color: hsl(203, 93%, 89%);
+}
+
+svg {
+  margin-top: -3px;
+}
+
+/* HEADER */
+
+.navWrap { 
+  display: inline-block;
+  background-color: skyblue;
+  width: 100%;
+  height: 8vh;
+
+  .logo {
+    height: 40px;
+    width: 115px;
+    margin: 1vh 0 0 10vw;
+    display: inline-block;
+  }
+
+  .nav {
+    float: right;
+    display: flex;
+    justify-content: flex-end;
+    list-style-type: none;
+    margin-top: 8px;
+
+    .navLink {
+      align-self: center;
+      min-width: 80px;
+      padding-right: 40px;
+      text-align: center;
+      font-size: 22px;
+      font-weight: 700;
+      text-transform: uppercase;
+
+      &:hover {
+        cursor: pointer;
+      }
+      
+      a, .ant-dropdown-trigger {
+        color: $backgroundGray;
+        text-decoration: none;
+      }
+
+      .navLinkActive {
+        border-bottom: solid 2px $backgroundGray;
+      }
+
+      .ant-dropdown-menu {
+        .ant-dropdown-menu-item {
+          color: $textLightblue;
+          background: $backgroundGray;
+        }
+      }
+    }
+  }
+}
+
+/* HOME */
+.cardsWrap {
+  background: $backgroundGray;
+  color: $textLightblue;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  min-height: 92vh;
+
+  @media only screen and (min-width: $screenBreakpoint) {
+    .card {
+      margin: 40px 20px;
+      height: 400px;
+    }
+  
+    .cardImg {
+      max-height: 340px;
+    }
+  
+    .favsBtn, .favsBtn:focus {
+      font-size: 16px;
+    }
+  }
+  
+  @media only screen and (max-width: $screenBreakpoint) {
+    .card {
+      margin: 40px 20px;
+      height: 300px;
+    }
+  
+    .cardImg {
+      max-height: 240px;
+    }
+  
+    .favsBtn, .favsBtn:focus {
+      font-size: 12px;
+      text-align: center;
+    }
+  }
+
+  .cardImg:hover {
+    opacity: 0.7;
+  }
+
+  .ant-pagination {
+    margin-bottom: 30px;
+  
+    .ant-pagination-item,
+    .ant-pagination-prev .ant-pagination-item-link,
+    .ant-pagination-next .ant-pagination-item-link {
+      border: none;
+      background: $textLightblue;
+      color: $backgroundGray;
+      font-weight: 600;
+    }
+  
+    .ant-pagination-disabled {
+      background: black;
+      color: lightslategray;
+    }
+  }
+}
+
+/* DETAILS */
+.details {
+  min-height: 92vh;
+  background-color: $backgroundGray;
+  color: $textLightblue;
+
+  .detailsImg {
+    display: block;
+    margin: 40px auto;
+    width: 75%;
+  }
+
+  .detailsContent {
+    padding: 40px;
+
+    h3 {
+      color: $textLightblue;
+      display: inline-block;
+      font-size: 24px;
+      font-weight: 600;
+      margin-left: 15px;
+    }
+
+    h4 {
+      float: right;
+      color: $textLightblue;
+      font-size: 22px;
+      font-weight: 300;
+      margin-top: 3px;
+      margin-left: 60px;
+
+      .hp {
+        color: $textLightblue;
+        font-size: 22px;
+        font-weight: 300;
+        margin-left: 15px;
+        float: right;
+      }
+    }
+
+    hr {
+      border-color: $textLightblue;
+    }
+
+    .attack {
+      padding: 10px;
+      font-size: 20px;
+
+      .attackName {
+        position: absolute;
+        left: 50px;
+      }
+
+      .attackIcons {
+        position: absolute;
+        right: 50px;
+      }
+    }
+
+    .ant-row {
+      padding: 10px;
+      text-align: center;
+      font-size: 18px;
+    }
+  }
+
+  .favsBtn, .favsBtn:focus {
+    width: 75%;
+  }
+}
+
+/* FAVOURITES */
+.favWrap {
+  background: $backgroundGray;
+  color: $textLightblue;
+  min-height: 92vh;
+  text-align: center;
+  padding: 20px;
+
+  h3 {
+    color: $textLightblue;
+    font-size: 24px;
+  }
+
+  .close {
+    font-size: 2em;
+    color: red;
+    background: $backgroundGray;
+    border-radius: 9999px;
+    position: relative;
+    top: -95px;
+    left: -15px;
+  }
+}
+
+/* FAVOURITES BUTTON */
+.favsBtn, .favsBtn:focus {
+  display: block;
+  margin: 25px auto 25px auto;
+  background: $textLightblue;
+  color: $backgroundGray;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+
+  &:hover {
+    display: block;
+    margin: 25px auto 25px auto;
+    background: #94d6ff;
+    color: $backgroundGray;
+    border-radius: 5px;
+  }
+
+  .svg {
+    margin-top: -7px;
+  }
+}
+
+
+/* ENERGY TYPES */
+.energy {
+  background-image: url('/images/energy-types.png');
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.energy.fire {
+  background-position: 0 0;
+}
+
+.energy.colorless {
+  background-position: -25px 0;
+}
+
+.energy.fairy {
+  background-position: -50px 0;
+}
+
+.energy.metal {
+  background-position: -75px 0;
+}
+
+.energy.dragon {
+  background-position: 0 -25px;
+}
+
+.energy.lightning {
+  background-position: -50px -50px;
+}
+
+.energy.fighting {
+  background-position: -50px -25px;
+}
+
+.energy.psychic {
+  background-position: -75px -25px;
+}
+
+.energy.darkness {
+  background-position: 0 -50px;
+}
+
+.energy.grass {
+  background-position: -25px -50px;
+}
+
+.energy.water {
+  background-position: -75px -50px;
+}
