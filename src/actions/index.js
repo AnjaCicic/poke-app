@@ -1,4 +1,4 @@
-import { CARDS, FAVOURITES, SORT } from '../constants/actionTypes';
+import { CARDS, FAVOURITES, SETTINGS } from '../constants/actionTypes';
 
 export const fetchCards = () => ({
   type: CARDS.fetch,
@@ -15,6 +15,11 @@ export const removeFromFavourites = data => ({
 });
 
 export const changeSort = data => ({
-  type: SORT.change,
+  type: SETTINGS.changeSort,
+  payload: data,
+});
+
+export const changePage = data => ({
+  type: SETTINGS.changePage,
   payload: data,
 });

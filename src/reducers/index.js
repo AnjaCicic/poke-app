@@ -2,10 +2,10 @@ import { combineReducers } from 'redux';
 
 import cards from './cards';
 import favourites from './favourites';
-import sort from './sort';
+import settings from './settings';
 
 export default combineReducers({
   cards,
   favourites,
-  sort,
+  settings,
 });

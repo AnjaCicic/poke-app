@@ -1,15 +1,15 @@
 import { connect } from 'react-redux';
 import Home from './components/Home.component';
-import { addToFavourites, removeFromFavourites } from '../../actions';
+import { changePage } from '../../actions';
 
 const mapStateToProps = state => ({
   cards: state.cards,
-  sort: state.sort,
+  sort: state.settings.sort,
+  page: state.settings.page,
 });
 
 const mapDispatchToProps = dispatch => ({
-  addToFavourites: data => dispatch(addToFavourites(data)),
-  removeFromFavourites: data => dispatch(removeFromFavourites(data)),
+  changePage: data => dispatch(changePage(data)),
 });
 
 export default connect(

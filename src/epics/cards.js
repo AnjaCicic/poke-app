@@ -4,8 +4,8 @@ import CONFIG from '../config';
 
 export const fetchCards = action$ =>
   action$.ofType(CARDS.fetch)
-    .switchMap(() =>
-      axios.get(`${CONFIG.apiUrl}/cards?page=1&pageSize=10`)
+    .switchMap(action =>
+      axios.get(`${CONFIG.apiUrl}/cards?page=${action.payload}&pageSize=144`)
         .then(res => ({
           type: CARDS.add,
           payload: (res.data.cards && res.data.cards.length) ? res.data.cards : [],

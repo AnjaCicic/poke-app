@@ -4,13 +4,13 @@ import axios from 'axios';
 import { Row, Col } from 'antd';
 
 import CONFIG from '../../config';
+import FavouritesBtn from '../../containers/FavouritesBtn';
 
 export default class extends PureComponent {
   static displayName = 'Details'
 
   static propTypes = {
     match: PropTypes.shape().isRequired,
-    renderFavouritesBtn: PropTypes.func.isRequired,
   }
 
   state = {
@@ -65,7 +65,7 @@ export default class extends PureComponent {
           src={card.imageUrl}
           alt={card.name}
         />
-        {this.props.renderFavouritesBtn(card)}
+        <FavouritesBtn card={card} />
       </Col>
       <Col xs={24} sm={16}>
         <div className="detailsContent">
@@ -78,7 +78,7 @@ export default class extends PureComponent {
           <Row>
             {(card.weaknesses && card.weaknesses.length) ? (
               <Col xs={8}>
-                <span>WEAKNESS</span><br />
+                <span> WEAKNESS </span><br />
                 {card.weaknesses.map((single, index) =>
                   (<span key={index}>
                     <i className={`energy ${single.type.toLowerCase()}`} /> {single.value}
@@ -87,7 +87,7 @@ export default class extends PureComponent {
             ) : null}
             {(card.resistances && card.resistances.length) ? (
               <Col xs={8}>
-                <span>RESISTANCE</span><br />
+                <span> RESISTANCE </span><br />
                 {card.resistances.map((single, index) =>
                   (<span key={index}>
                     <i className={`energy ${single.type.toLowerCase()}`} /> {single.value}
@@ -97,7 +97,7 @@ export default class extends PureComponent {
             ) : null}
             {(card.retreatCost && card.retreatCost.length) ? (
               <Col xs={8}>
-                <span>RETREAT COST</span><br />
+                <span> RETREAT COST </span><br />
                 {card.retreatCost.map((single, index) =>
                   (<i key={index} className={`energy ${single.toLowerCase()}`} />),
                 )}

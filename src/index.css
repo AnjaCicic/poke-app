@@ -104,6 +104,24 @@ svg {
   opacity: 0.7;
 }
 
+.ant-pagination {
+  margin-bottom: 30px;
+}
+
+.ant-pagination-item,
+.ant-pagination-prev .ant-pagination-item-link,
+.ant-pagination-next .ant-pagination-item-link {
+  border: none;
+  background: #c8e9fd;
+  color: #303030;
+  font-weight: 600;
+}
+
+.ant-pagination-disabled {
+  background: black;
+  color: lightslategray;
+}
+
 /* DETAILS */
 .details {
   min-height: 92vh;
@@ -124,7 +142,7 @@ svg {
   color: #303030;
   border: none;
   border-radius: 5px;
-  width: 90%;
+  width: 100%;
 }
 .ant-btn.favsBtn:hover {
   display: block;

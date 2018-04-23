@@ -8,6 +8,7 @@ export const FAVOURITES = {
   remove: '@FAVOURITES/remove',
 };
 
-export const SORT = {
-  change: '@SORT/change',
+export const SETTINGS = {
+  changeSort: '@SETTINGS/change sort',
+  changePage: '@SETTINGS/change page',
 };
