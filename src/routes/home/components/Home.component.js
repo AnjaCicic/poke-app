@@ -11,16 +11,60 @@ export default class extends PureComponent {
     cards: PropTypes.arrayOf(
       PropTypes.shape(),
     ),
+    sort: PropTypes.string,
   }
 
-  state = {}
+  state = {
+    cards: [],
+  }
+
+  componentWillMount() {
+    const { cards } = this.props;
+
+    if (cards && cards.length) {
+      this.setState({ cards });
+    }
+  }
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps);
+    const { sort: newSort, cards: newCards } = nextProps;
+    const { sort } = this.props;
+    const { cards } = this.state;
+
+    if (!cards || !cards.length || sort !== newSort) {
+      switch (newSort) {
+        case 'id':
+          this.setState({ cards: newCards.sort((a, b) => a.id > b.id) });
+          break;
+        case 'hpAscending':
+          this.setState({
+            cards: newCards.sort((a, b) => {
+              if (a.hp === 'None') return 1;
+              if (b.hp === 'None') return -1;
+
+              return parseInt(a.hp, 10) > parseInt(b.hp, 10);
+            }),
+          });
+          break;
+        case 'hpDescending':
+          this.setState({
+            cards: newCards.sort((a, b) => {
+              if (a.hp === 'None') return 1;
+              if (b.hp === 'None') return -1;
+
+              return parseInt(a.hp, 10) < parseInt(b.hp, 10);
+            }),
+          });
+          break;
+        default:
+          this.setState({ cards: newCards });
+          break;
+      }
+    }
   }
 
   renderCards = () => {
-    const { cards } = this.props;
+    const { cards } = this.state;
 
     if (!cards || !cards.length) return null;
 
@@ -33,7 +77,6 @@ export default class extends PureComponent {
   }
 
   render() {
-    console.log('sort change');
     return (<div className="cardsWrap">
       {this.renderCards()}
     </div>);

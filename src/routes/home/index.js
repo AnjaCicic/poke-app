@@ -4,6 +4,7 @@ import { addToFavourites, removeFromFavourites } from '../../actions';
 
 const mapStateToProps = state => ({
   cards: state.cards,
+  sort: state.sort,
 });
 
 const mapDispatchToProps = dispatch => ({
