@@ -17,6 +17,21 @@ svg {
   margin-top: -3px;
 }
 
+.loadingIcon {
+  background: url('/images/pokeball.png');
+  width: 65px;
+  height: 65px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+  display: block;
+  margin: 250px auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 /* HEADER */
 
 .navWrap { 

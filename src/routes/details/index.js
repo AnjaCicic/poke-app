@@ -10,7 +10,11 @@ export default class extends PureComponent {
   static displayName = 'Details'
 
   static propTypes = {
-    match: PropTypes.shape().isRequired,
+    match: PropTypes.shape({
+      params: PropTypes.shape({
+        id: PropTypes.string.isRequired,
+      }),
+    }),
   }
 
   state = {
