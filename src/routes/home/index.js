@@ -1,13 +1,18 @@
 import { connect } from 'react-redux';
 import Home from './components/Home.component';
-import { fetchCards, changePage } from '../../actions';
+import { fetchCards, changePage, toggleFavourites } from '../../actions';
 
-const getCards = (cards, sort, page) => {
+const getCards = (cards, favourites, sort, page) => {
+  const newCards = cards.map(card => ({
+    ...card,
+    isFavourite: favourites.findIndex(fav => fav === card.id) !== -1,
+  }));
+
   switch (sort) {
     case 'id':
-      return cards.sort((a, b) => a.id > b.id).slice((page - 1) * 12, page * 12);
+      return newCards.sort((a, b) => a.id > b.id).slice((page - 1) * 12, page * 12);
     case 'hpAscending':
-      return cards.sort((a, b) => {
+      return newCards.sort((a, b) => {
         if (!a.hp || a.hp.toLowerCase() === 'none') return 1;
         if (!b.hp || b.hp.toLowerCase() === 'none') return -1;
 
@@ -15,7 +20,7 @@ const getCards = (cards, sort, page) => {
       })
         .slice((page - 1) * 12, page * 12);
     case 'hpDescending':
-      return cards.sort((a, b) => {
+      return newCards.sort((a, b) => {
         if (!a.hp || a.hp.toLowerCase() === 'none') return 1;
         if (!b.hp || b.hp.toLowerCase() === 'none') return -1;
 
@@ -23,12 +28,12 @@ const getCards = (cards, sort, page) => {
       })
         .slice((page - 1) * 12, page * 12);
     default:
-      return cards.slice((page - 1) * 12, page * 12);
+      return newCards.slice((page - 1) * 12, page * 12);
   }
 };
 
 const mapStateToProps = state => ({
-  cards: getCards(state.cards, state.settings.sort, state.settings.page),
+  cards: getCards(state.cards, state.favourites, state.settings.sort, state.settings.page),
   page: state.settings.page,
   count: state.cards.length,
 });
@@ -36,6 +41,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   fetchCards: () => dispatch(fetchCards()),
   changePage: data => dispatch(changePage(data)),
+  toggleFavourites: data => dispatch(toggleFavourites(data)),
 });
 
 export default connect(

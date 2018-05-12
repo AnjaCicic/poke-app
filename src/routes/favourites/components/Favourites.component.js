@@ -3,17 +3,17 @@ import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import { FaMehO, FaTimesCircle } from 'react-icons/lib/fa';
 
-const renderFavourites = (favourites, removeFromFavourites) =>
+const renderFavourites = (favourites, toggleFavourites) =>
   favourites.map((card, index) => (
     <div className="card" key={index}>
       <NavLink to={`/details/${card.id}`}>
         <img className="cardImg" src={card.imageUrl} alt={card.name} />
       </NavLink>
-      <FaTimesCircle className="close" onClick={() => removeFromFavourites(card.id)} />
+      <FaTimesCircle className="close" onClick={() => toggleFavourites(card.id)} />
     </div>
   ));
 
-const Favourites = ({ favourites, removeFromFavourites }) => {
+const Favourites = ({ favourites, toggleFavourites }) => {
   if (!favourites || !favourites.length) {
     return (
       <div className="favWrap">
@@ -25,7 +25,7 @@ const Favourites = ({ favourites, removeFromFavourites }) => {
 
   return (
     <div className="favWrap">
-      {renderFavourites(favourites, removeFromFavourites)}
+      {renderFavourites(favourites, toggleFavourites)}
     </div>
   );
 };
@@ -38,7 +38,7 @@ Favourites.propTypes = {
       imageUrl: PropTypes.string,
     }),
   ),
-  removeFromFavourites: PropTypes.func,
+  toggleFavourites: PropTypes.func,
 };
 
 export default Favourites;

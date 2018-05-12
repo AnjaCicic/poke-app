@@ -2,12 +2,15 @@ import { FAVOURITES } from '../constants/actionTypes';
 
 export default (state = [], { type, payload }) => {
   switch (type) {
-    case FAVOURITES.add:
-      if (state.findIndex(single => single.id === payload.id) !== -1) return state;
+    case FAVOURITES.toggle: {
+      const index = state.findIndex(single => single === payload);
 
-      return [...state, payload];
-    case FAVOURITES.remove:
-      return state.filter(single => single.id !== payload);
+      if (index === -1) {
+        return [...state, payload];
+      }
+
+      return state.filter(single => single !== payload);
+    }
     default:
       return state;
   }

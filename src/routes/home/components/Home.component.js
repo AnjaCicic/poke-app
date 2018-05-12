@@ -1,46 +1,59 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import { Pagination } from 'antd';
 
-import FavouritesBtn from '../../../containers/FavouritesBtn';
+import FavouritesBtn from '../../../components/FavouritesBtn';
 
-const renderCards = cards => cards.map((card, index) => (
-  <div className="card" key={index}>
-    <NavLink to={`/details/${card.id}`}>
-      <img className="cardImg" src={card.imageUrl} alt={card.name} />
-    </NavLink>
-    <FavouritesBtn card={card} />
-  </div>
-));
+export default class extends PureComponent {
+  static displayName = 'Home'
 
-const Home = ({ page, cards, count, changePage }) => {
-  if (!cards || !cards.length) {
-    return (<div className="loadingIcon" />);
+  static propTypes = {
+    cards: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string,
+        name: PropTypes.string,
+        imageUrl: PropTypes.string,
+      }),
+    ),
+    page: PropTypes.number,
+    count: PropTypes.number,
+    changePage: PropTypes.func,
+    fetchCards: PropTypes.func,
+    toggleFavourites: PropTypes.func,
   }
 
-  return (<div className="cardsWrap">
-    {renderCards(cards)}
-    <Pagination
-      current={page}
-      total={count}
-      pageSize={12}
-      onChange={() => changePage(page)}
-    />
-  </div>);
-};
+  state = {}
 
-Home.propTypes = {
-  cards: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string,
-      name: PropTypes.string,
-      imageUrl: PropTypes.string,
-    }),
-  ),
-  page: PropTypes.number,
-  count: PropTypes.number,
-  changePage: PropTypes.func,
-};
+  componentDidMount() {
+    this.props.fetchCards();
+  }
 
-export default Home;
+  renderCards = () =>
+    this.props.cards.map((card, index) => (
+      <div className="card" key={index}>
+        <NavLink to={`/details/${card.id}`}>
+          <img className="cardImg" src={card.imageUrl} alt={card.name} />
+        </NavLink>
+        <FavouritesBtn cardId={card.id} isFavourite={card.isFavourite} toggleFavs={this.props.toggleFavourites} />
+      </div>
+    ));
+
+  render() {
+    const { page, cards, count } = this.props;
+
+    if (!cards || !cards.length) {
+      return (<div className="loadingIcon" />);
+    }
+
+    return (<div className="cardsWrap">
+      {this.renderCards(cards)}
+      <Pagination
+        current={page}
+        total={count}
+        pageSize={12}
+        onChange={this.props.changePage}
+      />
+    </div>);
+  }
+}

@@ -4,11 +4,15 @@ export const CARDS = {
 };
 
 export const FAVOURITES = {
-  add: '@FAVOURITES/add',
-  remove: '@FAVOURITES/remove',
+  toggle: '@FAVOURITES/toggle',
 };
 
 export const SETTINGS = {
   changeSort: '@SETTINGS/change sort',
   changePage: '@SETTINGS/change page',
+};
+
+export const DETAILS = {
+  fetch: '@DETAILS/fetch',
+  add: '@DETAILS/add',
 };

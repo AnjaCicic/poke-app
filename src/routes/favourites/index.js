@@ -1,13 +1,16 @@
 import { connect } from 'react-redux';
 import Favourites from './components/Favourites.component';
-import { removeFromFavourites } from '../../actions';
+import { toggleFavourites } from '../../actions';
+
+const getFavourites = (favourites, cards) =>
+  favourites.map(single => cards.find(card => card.id === single));
 
 const mapStateToProps = state => ({
-  favourites: state.favourites,
+  favourites: getFavourites(state.favourites, state.cards),
 });
 
 const mapDispatchToProps = dispatch => ({
-  removeFromFavourites: data => dispatch(removeFromFavourites(data)),
+  toggleFavourites: data => dispatch(toggleFavourites(data)),
 });
 
 export default connect(
