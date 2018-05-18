@@ -16,7 +16,7 @@ const FavouritesBtn = ({ cardId, isFavourite, toggleFavs }) => {
 };
 
 FavouritesBtn.propTypes = {
-  cardId: PropTypes.string.isRequired,
+  cardId: PropTypes.string,
   isFavourite: PropTypes.bool.isRequired,
   toggleFavs: PropTypes.func.isRequired,
 };

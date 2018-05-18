@@ -14,6 +14,7 @@ export default class extends PureComponent {
       }),
     }),
     card: PropTypes.shape(),
+    loading: PropTypes.bool,
     fetchDetails: PropTypes.func.isRequired,
     toggleFavourites: PropTypes.func.isRequired,
   }
@@ -42,9 +43,9 @@ export default class extends PureComponent {
   }
 
   render() {
-    const { card } = this.props;
+    const { card, loading } = this.props;
 
-    if (!card || !card.id) {
+    if (loading) {
       return (<Row className="details">
         <Col xs={24} sm={8}>
           <img

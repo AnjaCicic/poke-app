@@ -1,6 +1,8 @@
 import { connect } from 'react-redux';
 import Home from './components/Home.component';
-import { fetchCards, changePage, toggleFavourites } from '../../actions';
+import { fetchCards } from '../../reducers/cards/actions';
+import { changePage } from '../../reducers/settings/actions';
+import { toggleFavourites } from '../../reducers/favourites/actions';
 
 const getCards = (cards, favourites, sort, page) => {
   const newCards = cards.map(card => ({
@@ -33,9 +35,10 @@ const getCards = (cards, favourites, sort, page) => {
 };
 
 const mapStateToProps = state => ({
-  cards: getCards(state.cards, state.favourites, state.settings.sort, state.settings.page),
+  cards: getCards(state.cards.pokemon, state.favourites, state.settings.sort, state.settings.page),
+  loading: state.cards.loading,
   page: state.settings.page,
-  count: state.cards.length,
+  count: state.cards.pokemon.length,
 });
 
 const mapDispatchToProps = dispatch => ({

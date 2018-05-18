@@ -1,8 +1,9 @@
-import { FAVOURITES } from '../constants/actionTypes';
+import { FAVOURITES_TOGGLE } from './constants';
+import initState from './initState';
 
-export default (state = [], { type, payload }) => {
+export default (state = initState, { type, payload }) => {
   switch (type) {
-    case FAVOURITES.toggle: {
+    case FAVOURITES_TOGGLE: {
       const index = state.findIndex(single => single === payload);
 
       if (index === -1) {

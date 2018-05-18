@@ -28,13 +28,17 @@ svg {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* HEADER */
 
-.navWrap { 
+.navWrap {
   display: inline-block;
   background-color: skyblue;
   width: 100%;
@@ -59,14 +63,14 @@ svg {
       min-width: 80px;
       padding-right: 40px;
       text-align: center;
-      font-size: 22px;
+      font-size: 28px;
       font-weight: 700;
       text-transform: uppercase;
 
       &:hover {
         cursor: pointer;
       }
-      
+
       a, .ant-dropdown-trigger {
         color: $backgroundGray;
         text-decoration: none;
@@ -95,31 +99,29 @@ svg {
   justify-content: space-around;
   min-height: 92vh;
 
-  @media only screen and (min-width: $screenBreakpoint) {
-    .card {
-      margin: 40px 20px;
-      height: 400px;
-    }
-  
-    .cardImg {
-      max-height: 340px;
-    }
-  
-    .favsBtn, .favsBtn:focus {
-      font-size: 16px;
-    }
+  .card {
+    margin: 40px 20px;
+    height: 400px;
   }
-  
+
+  .cardImg {
+    max-height: 340px;
+  }
+
+  .favsBtn, .favsBtn:focus {
+    font-size: 16px;
+  }
+
   @media only screen and (max-width: $screenBreakpoint) {
     .card {
       margin: 40px 20px;
       height: 300px;
     }
-  
+
     .cardImg {
       max-height: 240px;
     }
-  
+
     .favsBtn, .favsBtn:focus {
       font-size: 12px;
       text-align: center;
@@ -132,7 +134,7 @@ svg {
 
   .ant-pagination {
     margin-bottom: 30px;
-  
+
     .ant-pagination-item,
     .ant-pagination-prev .ant-pagination-item-link,
     .ant-pagination-next .ant-pagination-item-link {
@@ -141,7 +143,7 @@ svg {
       color: $backgroundGray;
       font-weight: 600;
     }
-  
+
     .ant-pagination-disabled {
       background: black;
       color: lightslategray;
@@ -221,26 +223,43 @@ svg {
 }
 
 /* FAVOURITES */
+.favWrapEmpty {
+  background: $backgroundGray;
+  color: $textLightblue;
+  min-height: 92vh;
+  text-align: center;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+
+  h3 {
+    color: $textLightblue;
+    font-size: 24px;
+  }
+}
+
 .favWrap {
   background: $backgroundGray;
   color: $textLightblue;
   min-height: 92vh;
   text-align: center;
   padding: 20px;
+  display: flex;
 
-  h3 {
-    color: $textLightblue;
-    font-size: 24px;
-  }
-
-  .close {
-    font-size: 2em;
-    color: red;
-    background: $backgroundGray;
-    border-radius: 9999px;
-    position: relative;
-    top: -95px;
-    left: -15px;
+  .card {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+    
+    .close {
+      font-size: 2.5em;
+      color: red;
+      background: $backgroundGray;
+      border-radius: 9999px;
+      position: relative;
+      top: -10px;
+      left: -15px;
+    }
   }
 }
 
@@ -266,7 +285,6 @@ svg {
     margin-top: -7px;
   }
 }
-
 
 /* ENERGY TYPES */
 .energy {

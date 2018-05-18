@@ -16,6 +16,7 @@ export default class extends PureComponent {
         imageUrl: PropTypes.string,
       }),
     ),
+    loading: PropTypes.bool,
     page: PropTypes.number,
     count: PropTypes.number,
     changePage: PropTypes.func,
@@ -40,9 +41,9 @@ export default class extends PureComponent {
     ));
 
   render() {
-    const { page, cards, count } = this.props;
+    const { page, cards, count, loading } = this.props;
 
-    if (!cards || !cards.length) {
+    if (loading) {
       return (<div className="loadingIcon" />);
     }
 

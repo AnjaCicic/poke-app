@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { Dropdown, Menu } from 'antd';
 import { FaCaretDown } from 'react-icons/lib/fa';
-import { changeSort } from '../actions';
+import { changeSort } from '../reducers/settings/actions';
 
 const { Item } = Menu;
 

@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import Details from './Details.component';
-import { toggleFavourites, fetchDetails } from '../../actions';
+import { toggleFavourites } from '../../reducers/favourites/actions';
+import { fetchDetails } from '../../reducers/details/actions';
 
 const isCardFavourite = (card, favourites) => {
   if (!card || !Object.keys(card).length || !favourites || !favourites.length) return false;
@@ -10,9 +11,10 @@ const isCardFavourite = (card, favourites) => {
 
 const mapStateToProps = state => ({
   card: {
-    ...state.details,
-    isFavourite: isCardFavourite(state.details, state.favourites),
+    ...state.details.card,
+    isFavourite: isCardFavourite(state.details.card, state.favourites),
   },
+  loading: state.details.loading,
 });
 
 const mapDispatchToProps = dispatch => ({

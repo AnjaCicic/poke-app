@@ -16,7 +16,7 @@ const renderFavourites = (favourites, toggleFavourites) =>
 const Favourites = ({ favourites, toggleFavourites }) => {
   if (!favourites || !favourites.length) {
     return (
-      <div className="favWrap">
+      <div className="favWrapEmpty">
         <h3><FaMehO /> No favourites</h3>
         <span>Go back to home page and add some cards to favourites</span>
       </div>

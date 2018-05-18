@@ -1,18 +1,17 @@
-import { createStore, compose, applyMiddleware } from 'redux';
-import { createEpicMiddleware } from 'redux-observable';
+import { createStore, compose } from 'redux';
 
-import reducers from '../reducers';
-import epics from '../epics';
+import initState from './initState';
+import reducers from './reducers';
+import middleware from './middleware';
 
-export default function configStore(initalState) {
+export default () => {
   const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-  const epicMiddleware = createEpicMiddleware(epics);
 
   return createStore(
     reducers,
-    initalState,
+    initState,
     composeEnhancers(
-      applyMiddleware(epicMiddleware),
+      middleware(),
     ),
   );
-}
+};
